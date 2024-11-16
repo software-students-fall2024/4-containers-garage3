@@ -82,14 +82,14 @@ def get_analysis():
     )  # Debugging line
 
     document = collection.find_one(
-        {"request_id": request_id, "overall_status": "processed"}
+        {"request_id": request_id, "overall_status": "pending"}
     )
     if document:
         print("Document found:", document)  # Debugging line
         document["_id"] = str(document["_id"])
         return jsonify(document)
     print("No processed analysis found for request_id:", request_id)  # Debugging line
-    return jsonify({"message": "No processed analysis found"}), 404
+    return jsonify({"message": "No processed analysis found"}), 500
 
 
 if __name__ == "__main__":

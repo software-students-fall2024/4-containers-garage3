@@ -13,7 +13,7 @@ services:
     build: ./web-app  # Path to Dockerfile for web-app
     container_name: web_app
     ports:
-      - "5000:5000"  # Map Flask web server to the host
+      - "5001:5000"  # Map Flask web server to the host
     environment:
       - MONGO_URI=mongodb://mongodb:27017/  # MongoDB connection URI
     depends_on:
