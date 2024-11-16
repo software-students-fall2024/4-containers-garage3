@@ -12,12 +12,6 @@ from pymongo import MongoClient, errors
 import nltk
 from nltk.tokenize import sent_tokenize
 
-import sys 
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..")) 
-sys.path.append(project_root)
-from machine_learning_client.app import *
-
-
 app = Flask(__name__)
 
 # Download NLTK data for sentence tokenization
@@ -88,14 +82,14 @@ def get_analysis():
     )  # Debugging line
 
     document = collection.find_one(
-        {"request_id": request_id, "overall_status": "pending"}
+        {"request_id": request_id, "overall_status": "processed"}
     )
     if document:
         print("Document found:", document)  # Debugging line
         document["_id"] = str(document["_id"])
         return jsonify(document)
     print("No processed analysis found for request_id:", request_id)  # Debugging line
-    return jsonify({"message": "No processed analysis found"}), 500
+    return jsonify({"message": "No processed analysis found"}), 404
 
 
 if __name__ == "__main__":
