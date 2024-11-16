@@ -12,6 +12,12 @@ from pymongo import MongoClient, errors
 import nltk
 from nltk.tokenize import sent_tokenize
 
+import sys 
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..")) 
+sys.path.append(project_root)
+from machine_learning_client.app import *
+
+
 app = Flask(__name__)
 
 # Download NLTK data for sentence tokenization
