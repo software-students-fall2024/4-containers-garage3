@@ -100,14 +100,13 @@ def perform_topic_modeling(sentences, num_topics=5):
     :return: List of identified topics
     :raises: ValueError
     """
-    stop_words = set(stopwords.words("english"))
-    lemmatizer = WordNetLemmatizer()
 
-    # Preprocess
     def preprocess(text):
         tokens = word_tokenize(text.lower())
-        tokens = [lemmatizer.lemmatize(token) for token in tokens if token.isalnum()]
-        tokens = [token for token in tokens if token not in stop_words]
+        tokens = [
+            WordNetLemmatizer().lemmatize(token) for token in tokens if token.isalnum()
+        ]
+        tokens = [token for token in tokens if token not in stopwords.words("english")]
         return tokens
 
     texts = list(
@@ -123,11 +122,17 @@ def perform_topic_modeling(sentences, num_topics=5):
     # Create corpus
     corpus = [dictionary.doc2bow(text) for text in texts]
     if len(dictionary) == 0:
-        raise ValueError("Cannot compute LDA over an empty collection (no terms). "
-                         "Adjust your sample data or filtering parameters.")
+        raise ValueError(
+            "Cannot compute LDA over an empty collection (no terms). "
+            "Adjust your sample data or filtering parameters."
+        )
     actual_num_topics = min(num_topics, len(dictionary))
     if actual_num_topics < num_topics:
-        print(f"Adjusted num_topics from {num_topics} to {actual_num_topics} based on the dictionary size.")
+        print(
+            f"Adjusted num_topics from {num_topics} to {actual_num_topics} "
+            f"based on the dictionary size."
+        )
+
         num_topics = actual_num_topics
     # Build LDA model
     lda_model = models.LdaModel(
@@ -141,14 +146,14 @@ def perform_topic_modeling(sentences, num_topics=5):
         random_state=42,
     )
     # skip coherence calculation in test environment
-    if not os.getenv('TESTING'):
+    if not os.getenv("TESTING"):
         try:
             coherence_model_lda = CoherenceModel(
                 model=lda_model, texts=texts, dictionary=dictionary, coherence="c_v"
             )
             coherence_score = coherence_model_lda.get_coherence()
             print(f"Coherence Score: {coherence_score}")
-        except Exception as e:
+        except ValueError as e:
             print(f"Skipping coherence calculation: {str(e)}")
 
     topics = lda_model.print_topics(num_words=4)

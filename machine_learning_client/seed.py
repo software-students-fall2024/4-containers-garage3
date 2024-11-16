@@ -1,10 +1,16 @@
+"""
+This script reads a text file, splits it into sentences, 
+and inserts the data into a MongoDB collection.
+"""
+
 import os
 import uuid
+from datetime import datetime
+
 import nltk
 from nltk.tokenize import sent_tokenize
 from pymongo import MongoClient
 from dotenv import load_dotenv
-from datetime import datetime
 
 load_dotenv()
 
@@ -15,19 +21,19 @@ with open("speech.txt", "r", encoding="utf-8") as f:
     speech_text = f.read()
 
 sentences = sent_tokenize(speech_text)
-request_id = str(uuid.uuid4())
-document = { 
+request_id = str(uuid.uuid4())  # pylint: disable=invalid-name
+document = {
     "request_id": request_id,
     "sentences": [],
     "overall_status": "pending",
-    "timestamp": datetime.now()
+    "timestamp": datetime.now(),
 }
 
 for sentence in sentences:
-    sentence_entry = { 
+    sentence_entry = {
         "sentence": sentence.strip(),
         "status": "pending",
-        "analysis": None
+        "analysis": None,
     }
     document["sentences"].append(sentence_entry)
 
