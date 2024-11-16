@@ -4,6 +4,55 @@
 
 Build a containerized app that uses machine learning. See [instructions](./instructions.md) for details.
 
+
+## 👥 Team Members
+
+- [Yuhao Sheng (ys4689)](https://github.com/imyhalex)
+- [Ryoma Nagano (rn2247)](https://github.com/RYOMA-NAGANO)
+- [Qiyun Yin (qy765)](https://github.com/Bryccce)
+- [Andrea Tang (xt2073)](https://github.com/AndreaTang123)
+
+## Description
+
+The `AI Sentence Checker` is a containerized system designed to provide an intuitive interface for analyzing the sentiment or emotion within a user-provided text. This project combines machine learning, web development, and data visualization to deliver actionable insights through a seamless user experience.
+
+## Project structure
+
+```text
+.
+├── machine_learning_client
+│   ├── app.py
+│   ├── Dockerfile
+│   ├── Pipfile
+│   ├── Pipfile.lock
+│   ├── readme.txt
+│   ├── requirements.txt
+│   ├── seed.py
+│   ├── sentiment.texts.json
+│   ├── speech.txt
+│   └── test_app.py
+├── web-app
+│   ├── static
+│   │   ├── css
+│   │   │   └── index.css
+│   │   └── app.js
+│   ├── templates
+│   │   └── index.html
+│   ├── app.py
+│   ├── conftest.py
+│   ├── Dockerfile
+│   ├── Pipfile
+│   ├── Pipfile.lock
+│   ├── readme.txt
+│   ├── requirements.txt
+│   └── test_app.py
+├── .gitignore
+├── docker-compose.yml
+├── instructions.md
+├── LICENSE
+└── README.md
+```
+
 ## ML result
 ```json
 [{
