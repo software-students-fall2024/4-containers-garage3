@@ -20,7 +20,7 @@ services:
       - mongodb  # Wait for MongoDB before starting
 
   ml_client:
-    build: ./machine-learning-client  # Path to Dockerfile for machine-learning-client
+    build: ./machine_learning_client  # Path to Dockerfile for machine-learning-client
     container_name: ml_client
     environment:
       - MONGO_URI=mongodb://mongodb:27017/  # MongoDB connection URI

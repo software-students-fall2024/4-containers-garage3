@@ -54,6 +54,7 @@ The `AI Sentence Checker` is a containerized system designed to provide an intui
 ```
 
 ## ML result
+
 ```json
 [{
   "request_id": "2ca1c4d9-9f77-42a1-814d-be5f721408d0",
@@ -198,3 +199,27 @@ The `AI Sentence Checker` is a containerized system designed to provide an intui
   ]
 }]
 ```
+
+## How to run
+
+___1. Make sure Docker Desktop is installed in your computer___
+> - [link to download the Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+___2. Clone this repository to your local machine___
+```text
+https://github.com/software-students-fall2024/4-containers-garage3.git
+```
+___3. In the terminal, enter these two command to ensure the packages are installed___
+```bash
+$ pip install -r machine_learning_client/requirements.txt
+$ pip install -r web-app/requirements.txt
+```
+___4. In terminal, run the following command to run the project___
+```bash
+$ docker-compose down
+$ docker-compose up --build
+```
+___5. Go to Docker Desktop, click on the 5000:5000 port to run the webpage___
+
+## Task boards
+- [Task board for our team](https://github.com/orgs/software-students-fall2024/projects/96)
