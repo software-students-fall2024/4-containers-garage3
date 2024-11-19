@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.10'
 
-     - name: Install dependencies
+      - name: Install dependencies
         if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
         run: |
           cd ${{ matrix.subdir }}
@@ -30,13 +30,12 @@ jobs:
         if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
         run: |
           cd ${{ matrix.subdir }}
-          pipenv run pytest --cov=. --cov-report xml
-      
+          pipenv run pytest --cov=. --cov-report=xml
+
       - name: Upload coverage to Codecov
         if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
         uses: codecov/codecov-action@v3
         with:
-          files: ${{ matrix.subdir }}/coverage.xml
+          files: ./${{ matrix.subdir }}/coverage.xml
           flags: ${{ matrix.subdir }}
           name: codecov-coverage-report-${{ matrix.subdir }}
-        
