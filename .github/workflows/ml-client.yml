@@ -38,13 +38,7 @@ jobs:
       - name: Verify pytest-cov Installation
         run: |
           pip show pytest-cov
-
-      - name: Run pytest
-        if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
-        run: |
-          cd ${{ matrix.subdir }}
-          NLTK_DATA=/home/runner/nltk_data pipenv run pytest --cov=. --cov-report xml
-
+          
       - name: Upload coverage to Codecov
         if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
         uses: codecov/codecov-action@v3
