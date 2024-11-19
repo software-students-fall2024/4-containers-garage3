@@ -1,4 +1,4 @@
-![Lint-free](https://github.com/nyu-software-engineering/containerized-app-exercise/actions/workflows/lint.yml/badge.svg)![Machine Learning Client Build](https://github.com/<YOUR_USERNAME>/<YOUR_REPOSITORY>/actions/workflows/ml-client.yml/badge.svg)![Web App Build](https://github.com/<YOUR_USERNAME>/<YOUR_REPOSITORY>/actions/workflows/web-app.yml/badge.svg)
+![Lint-free](https://github.com/nyu-software-engineering/containerized-app-exercise/actions/workflows/lint.yml/badge.svg)![Machine Learning Client Build](https://github.com/software-students-fall2024/4-containers-garage3/actions/workflows/ml-client.yml/badge.svg)![Web App Build](https://github.com/software-students-fall2024/4-containers-garage3/actions/workflows/web-app.yml/badge.svg)
 
 # Containerized App Exercise
 
