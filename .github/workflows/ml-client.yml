@@ -23,19 +23,18 @@ jobs:
         run: |
           cd ${{ matrix.subdir }}
           python -m pip install --upgrade pip
-          python -m pip install pipenv
-          pipenv install --dev
+          python -m pip install -r requirements.txt
 
       - name: Run pytest
         if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
         run: |
           cd ${{ matrix.subdir }}
-          pipenv run pytest --cov=. --cov-report=xml
+          pytest --cov=. --cov-report=xml
 
       - name: Upload coverage to Codecov
         if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
         uses: codecov/codecov-action@v3
         with:
-          files: ./${{ matrix.subdir }}/coverage.xml
+          files: ${{ matrix.subdir }}/coverage.xml
           flags: ${{ matrix.subdir }}
           name: codecov-coverage-report-${{ matrix.subdir }}
