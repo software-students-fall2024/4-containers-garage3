@@ -38,7 +38,12 @@ jobs:
       - name: Verify pytest-cov Installation
         run: |
           pip show pytest-cov
-          
+      
+      - name: Run Tests
+        working-directory: machine-learning-client
+        run: |
+          pytest --cov=app.py --cov-report=xml
+
       - name: Upload coverage to Codecov
         if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
         uses: codecov/codecov-action@v3
