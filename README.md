@@ -1,4 +1,4 @@
-![Lint-free](https://github.com/nyu-software-engineering/containerized-app-exercise/actions/workflows/lint.yml/badge.svg)
+![Lint-free](https://github.com/nyu-software-engineering/containerized-app-exercise/actions/workflows/lint.yml/badge.svg)![Machine Learning Client Build](https://github.com/<YOUR_USERNAME>/<YOUR_REPOSITORY>/actions/workflows/ml-client.yml/badge.svg)![Web App Build](https://github.com/<YOUR_USERNAME>/<YOUR_REPOSITORY>/actions/workflows/web-app.yml/badge.svg)
 
 # Containerized App Exercise
 
@@ -16,6 +16,8 @@ Build a containerized app that uses machine learning. See [instructions](./instr
 
 The `AI Sentence Checker` is a containerized system designed to provide an intuitive interface for analyzing the sentiment or emotion within a user-provided text. This project combines machine learning, web development, and data visualization to deliver actionable insights through a seamless user experience.
 
+#### NOTE:
+This project uses keyboard and microphone as sensors to detect user input text. There is a sample [`speech.txt`](https://github.com/software-students-fall2024/4-containers-garage3/blob/main/speech1.txt) and [`speech1.txt`](https://github.com/software-students-fall2024/4-containers-garage3/blob/main/speech.txt) and you can copy and paste them into the input text box to have a quick look. Otherwise you need type in or find a source text that is more than 300 words to ensure you get the analyze result from ml client.
 
 ## How to run
 
@@ -68,7 +70,6 @@ $ docker-compose up -d
 $ docker-compose down
 ```
 ___5. Go to Docker Desktop, click on the 5000:5000 port to run the webpage___
-
 
 ## Task boards
 - [Task board for our team](https://github.com/orgs/software-students-fall2024/projects/96)
