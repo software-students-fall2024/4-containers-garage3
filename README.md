@@ -5,7 +5,7 @@
 Build a containerized app that uses machine learning. See [instructions](./instructions.md) for details.
 
 
-## 👥 Team Members
+## Team Members
 
 - [Yuhao Sheng (ys4689)](https://github.com/imyhalex)
 - [Ryoma Nagano (rn2247)](https://github.com/RYOMA-NAGANO)
@@ -16,210 +16,59 @@ Build a containerized app that uses machine learning. See [instructions](./instr
 
 The `AI Sentence Checker` is a containerized system designed to provide an intuitive interface for analyzing the sentiment or emotion within a user-provided text. This project combines machine learning, web development, and data visualization to deliver actionable insights through a seamless user experience.
 
-## Project structure
-
-```text
-.
-├── machine_learning_client
-│   ├── app.py
-│   ├── Dockerfile
-│   ├── Pipfile
-│   ├── Pipfile.lock
-│   ├── readme.txt
-│   ├── requirements.txt
-│   ├── seed.py
-│   ├── sentiment.texts.json
-│   ├── speech.txt
-│   └── test_app.py
-├── web-app
-│   ├── static
-│   │   ├── css
-│   │   │   └── index.css
-│   │   └── app.js
-│   ├── templates
-│   │   └── index.html
-│   ├── app.py
-│   ├── conftest.py
-│   ├── Dockerfile
-│   ├── Pipfile
-│   ├── Pipfile.lock
-│   ├── readme.txt
-│   ├── requirements.txt
-│   └── test_app.py
-├── .gitignore
-├── docker-compose.yml
-├── instructions.md
-├── LICENSE
-└── README.md
-```
-
-## ML result
-
-```json
-[{
-  "request_id": "2ca1c4d9-9f77-42a1-814d-be5f721408d0",
-  "sentences": [
-    {
-      "sentence": "With an apology and full back pay.",
-      "status": "processed",
-      "analysis": {
-        "neg": 0.184,
-        "neu": 0.658,
-        "pos": 0.158,
-        "compound": -0.0516
-      },
-      "emotions": [
-        "Sad"
-      ]
-    },
-    {
-      "sentence": "Thank you.",
-      "status": "processed",
-      "analysis": {
-        "neg": 0,
-        "neu": 0.286,
-        "pos": 0.714,
-        "compound": 0.3612
-      },
-      "emotions": [
-        "Neutural"
-      ]
-    },
-    {
-      "sentence": "And they deserve an apology and they deserve full back pay and they'll get it.",
-      "status": "processed",
-      "analysis": {
-        "neg": 0.09,
-        "neu": 0.833,
-        "pos": 0.077,
-        "compound": -0.0516
-      },
-      "emotions": [
-        "Sad"
-      ]
-    },
-    {
-      "sentence": "And unlike Biden, possibly getting us into World War III, which can seriously happen, I will keep America out of foolish and unnecessary foreign wars just as I did for four straight years.",
-      "status": "processed",
-      "analysis": {
-        "neg": 0.288,
-        "neu": 0.663,
-        "pos": 0.048,
-        "compound": -0.8555
-      },
-      "emotions": [
-        "Fear"
-      ]
-    },
-    {
-      "sentence": "We will again have peace through strength.",
-      "status": "processed",
-      "analysis": {
-        "neg": 0,
-        "neu": 0.427,
-        "pos": 0.573,
-        "compound": 0.7717
-      },
-      "emotions": [
-        "Neutural"
-      ]
-    },
-    {
-      "sentence": "That's all it is.",
-      "status": "processed",
-      "analysis": {
-        "neg": 0,
-        "neu": 1,
-        "pos": 0,
-        "compound": 0
-      },
-      "emotions": [
-        "Neutural"
-      ]
-    },
-    {
-      "sentence": "(51:45) As events oversees have shown to protect our people from the unthinkable thread of nuclear weapons and hypersonic missiles, the United States must also build a state of the art next generation missile defense shield.",
-      "status": "processed",
-      "analysis": {
-        "neg": 0.071,
-        "neu": 0.76,
-        "pos": 0.169,
-        "compound": 0.4588
-      },
-      "emotions": [
-        "Fear"
-      ]
-    },
-    ...
-  ],
-  "overall_status": "processed",
-  "timestamp": {
-    "$date": "2024-11-12T02:23:46.522Z"
-  },
-  "overall_emotions": [
-    "Neutural"
-  ],
-  "sentiment_trend": [
-    {
-      "sentence_index": 0,
-      "compound": -0.0516
-    },
-    {
-      "sentence_index": 1,
-      "compound": 0.3612
-    },
-    {
-      "sentence_index": 2,
-      "compound": -0.0516
-    },
-    ...
-  ],
-  "summary": "That's all it is. You had a winner, you had a loser. They... And I appreciate the job you do and the abuse that you've taken. We will be resisted by the combined forces of the establishment, the media, the special interest, the globalists, the Marxist, radicals, the woke corporations, the weaponized power of the federal government, the colossal political machines, the tidal wave of dark money and the most dangerous domestic censorship system ever created by man or woman. If our movement remains united and confident, then we will shatter the forces of tyranny and we will unleash that glories of liberty for ourselves and for our children, and for generations yet to come.",
-  "topics": [
-    [
-      0,
-      "0.250*\"country\" + 0.201*\"wa\" + 0.176*\"need\" + 0.176*\"thank\""
-    ],
-    [
-      1,
-      "0.342*\"america\" + 0.307*\"make\" + 0.232*\"election\" + 0.045*\"great\""
-    ],
-    [
-      2,
-      "0.486*\"got\" + 0.347*\"year\" + 0.018*\"america\" + 0.014*\"country\""
-    ],
-    [
-      3,
-      "0.419*\"people\" + 0.418*\"great\" + 0.014*\"thank\" + 0.014*\"election\""
-    ],
-    [
-      4,
-      "0.404*\"stand\" + 0.404*\"congress\" + 0.020*\"year\" + 0.016*\"wa\""
-    ]
-  ]
-}]
-```
 
 ## How to run
 
-___1. Make sure Docker Desktop is installed in your computer___
+___1. Make sure Docker Desktop is installed in your local machine___
 > - [link to download the Docker Desktop](https://www.docker.com/products/docker-desktop/)
+Note: Make sure you also installed [Docker Compose](https://docs.docker.com/compose/)
 
 ___2. Clone this repository to your local machine___
 ```text
 https://github.com/software-students-fall2024/4-containers-garage3.git
 ```
-___3. In the terminal, enter these two command to ensure the packages are installed___
+
+___3. Create virtual environments for both web app and machine learning client___
 ```bash
-$ pip install -r machine_learning_client/requirements.txt
-$ pip install -r web-app/requirements.txt
+# for web-app
+$ cd web-app
+$ python3 -m venv .venv
+
+# for ml client
+$ cd machine-learning-client
+$ python3 -m venv .venv
 ```
-___4. In terminal, run the following command to run the project___
+___4. Activate a virtual environment and install required packages (machine-learning-client in this example)___
 ```bash
-$ docker-compose down
+project@root$ cd machine-learning-client
+project@root/machine-learning-client$ source .venv/bin/activate
+project@root/machine-learning-client$ pip3 install -r requirements.txt
+
+# note: if you want to run web-app locally, you need to deactivate the ml's virtual environment first and do the aforementioned step again
+```
+___5. Before containerized to your docker, you can test each service part locally to see how it interact with the database by adding your MONGO_URI to `.env`(machine-learning-client in this example)___
+```bash
+# let's say current dir is in: 4-containers-garage3/machine-learning-client
+
+# create a .env file
+touch .env
+
+# within the .env enter:
+MONOGO_URI=mongodb://mongo:27017/ # default uri
+```
+
+___6. Build your Docker images___
+```bash
 $ docker-compose up --build
+
+# run the service in the background in detached mode:
+$ docker-compose up -d
+
+# shut down and remove the container
+$ docker-compose down
 ```
 ___5. Go to Docker Desktop, click on the 5000:5000 port to run the webpage___
+
 
 ## Task boards
 - [Task board for our team](https://github.com/orgs/software-students-fall2024/projects/96)
