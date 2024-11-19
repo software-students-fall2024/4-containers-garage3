@@ -25,6 +25,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
+      - name: Download NLTK Data
+        if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
+        run: |
+          python -m nltk.downloader punkt
+
       - name: Verify pytest-cov Installation
         run: |
           pip show pytest-cov
