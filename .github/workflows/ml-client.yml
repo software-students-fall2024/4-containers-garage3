@@ -3,14 +3,14 @@ name: Machine Learning Client CI
 on: [push, pull_request]
 
 jobs:
-  build-test:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         subdir: [machine-learning-client]
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -18,12 +18,25 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Dependencies
+     - name: Install dependencies
+        if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
         run: |
+          cd ${{ matrix.subdir }}
           python -m pip install --upgrade pip
-          pip install -r machine-learning-client/requirements.txt
+          python -m pip install pipenv
+          pipenv install --dev
 
-      - name: Run Tests
-        working-directory: machine-learning-client
+      - name: Run pytest
+        if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
         run: |
-          pytest --cov=app.py --cov-report=xml
+          cd ${{ matrix.subdir }}
+          pipenv run pytest --cov=. --cov-report xml
+      
+      - name: Upload coverage to Codecov
+        if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
+        uses: codecov/codecov-action@v3
+        with:
+          files: ${{ matrix.subdir }}/coverage.xml
+          flags: ${{ matrix.subdir }}
+          name: codecov-coverage-report-${{ matrix.subdir }}
+        
