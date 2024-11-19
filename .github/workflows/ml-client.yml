@@ -5,6 +5,9 @@ on: [push, pull_request]
 jobs:
   build-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        subdir: [machine-learning-client]
 
     steps:
       - name: Checkout Repository
