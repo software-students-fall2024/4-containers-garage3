@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # repeat the same job for each subsystem in the following subdirectories
+        # repeat same job for each subsystem in the following subdirectories
         subdir: [web-app, machine-learning-client]
     steps:
       - uses: actions/checkout@v4
@@ -15,7 +15,6 @@ jobs:
         with:
           python-version: "3.10" # update version(s) as needed
       - name: Install dependencies
-        # Ensure dependencies are installed only if Python files exist in the subdirectory
         if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
         run: |
           cd ${{ matrix.subdir }}
@@ -24,14 +23,14 @@ jobs:
           pipenv sync --dev --python $(which python)
           pipenv shell --fancy --python $(which python)
       - name: Lint with pylint
-        # Run pylint on only Python files if they exist
         if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
+        # you may set pylint to ignore any files or dependencies that make no sense to lint
         run: |
           cd ${{ matrix.subdir }}
           pipenv run pylint **/*.py
       - name: Format with black
-        # Format only Python files if they exist
         if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
+        # you may set black to ignore any files or dependencies that make no sense to format
         run: |
           cd ${{ matrix.subdir }}
-          pipenv run black --diff --check **/*.py
+          pipenv run black --diff --check .
