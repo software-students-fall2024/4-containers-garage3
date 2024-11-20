@@ -14,7 +14,7 @@ Build a containerized app that uses machine learning. See [instructions](./instr
 
 ## Description
 
-The `AI Sentence Checker` is a containerized system designed to provide an intuitive interface for analyzing the sentiment or emotion within a user-provided text. This project combines machine learning, web development, and data visualization to deliver actionable insights through a seamless user experience.
+The `AI Sentence Checker` is a containerized system designed to provide an intuitive interface for analyzing the sentiment or emotion within a user-provided text. This project combines machine learning, web development, and data visualization.
 
 #### NOTE:
 This project uses keyboard and microphone as sensors to detect user input text. There is a sample [`speech.txt`](https://github.com/software-students-fall2024/4-containers-garage3/blob/main/speech1.txt) and [`speech1.txt`](https://github.com/software-students-fall2024/4-containers-garage3/blob/main/speech.txt) and you can copy and paste them into the input text box to have a quick look. Otherwise you need type in or find a source text that is more than 300 words to ensure you get the analyze result from ml client.
