@@ -69,7 +69,7 @@ $ docker-compose up -d
 # shut down and remove the container
 $ docker-compose down
 ```
-___5. Go to Docker Desktop, click on the 5000:5000 port to run the webpage___
+___7. Go to Docker Desktop, click on the 5000:5000 port to run the webpage___
 
 ## Task boards
 - [Task board for our team](https://github.com/orgs/software-students-fall2024/projects/96)
